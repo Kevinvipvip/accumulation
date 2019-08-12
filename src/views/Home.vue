@@ -1,30 +1,31 @@
 <template>
   <div class="home">
+    <Header msg="这是导航栏"/>
     <div class="eight-diagrams">
       <div class="around-img-box">
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art1.jpg')"><a
+        <div class="around-img" :style="'background-image: url('+img[0]+')'"><a
           href="http://www.baidu.com"></a></div>
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art2.jpg')"><a
+        <div class="around-img" :style="'background-image: url('+img[1]+')'"><a
           href="http://www.baidu.com"></a></div>
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art3.jpg')"><a
-          href="http://www.baidu.com"></a></div>
-      </div>
-      <div class="around-img-box">
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art4.jpg')"><a
-          href="http://www.baidu.com"></a></div>
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art5.jpg')"><a
+        <div class="around-img" :style="'background-image: url('+img[2]+')'"><a
           href="http://www.baidu.com"></a></div>
       </div>
       <div class="around-img-box">
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art6.jpg')"><a
+        <div class="around-img" :style="'background-image: url('+img[3]+')'"><a
           href="http://www.baidu.com"></a></div>
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art7.jpg')"><a
+        <div class="around-img" :style="'background-image: url('+img[4]+')'"><a
           href="http://www.baidu.com"></a></div>
-        <div class="around-img" style="background-image: url('http://static.wcip.net/images/art8.jpg')"><a
+      </div>
+      <div class="around-img-box">
+        <div class="around-img" :style="'background-image: url('+img[5]+')'"><a
+          href="http://www.baidu.com"></a></div>
+        <div class="around-img" :style="'background-image: url('+img[6]+')'"><a
+          href="http://www.baidu.com"></a></div>
+        <div class="around-img" :style="'background-image: url('+img[7]+')'"><a
           href="http://www.baidu.com"></a></div>
       </div>
       <div class="eight-diagrams-center">
-        <div class="center-img" :style="'background-image: url(http://static.wcip.net/images/art'+new_num+'.jpg)'">
+        <div class="center-img" :style="'background-image: url('+img[new_num]+')'">
           <div class="tai-chi turn-around" @load="turn_around">
             <div class="tai-chi-cont"></div>
             <div class="tai-chi-cont black"></div>
@@ -40,22 +41,34 @@
         </div>
       </div>
     </div>
-    <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
   </div>
 </template>
 
 <script>
-  import HelloWorld from '@/components/HelloWorld.vue'
+  import Header from '@/components/Header.vue'
 
   export default {
     name: 'home',
     data () {
       return {
-        new_num: 1,
+        img: [
+          'http://static.wcip.net/images/art1.jpg',
+          'http://static.wcip.net/images/art2.jpg',
+          'http://static.wcip.net/images/art3.jpg',
+          'http://static.wcip.net/images/art4.jpg',
+          'http://static.wcip.net/images/art5.jpg',
+          'http://static.wcip.net/images/art6.jpg',
+          'http://static.wcip.net/images/art7.jpg',
+          'http://static.wcip.net/images/art8.jpg',
+          'http://static.wcip.net/images/art9.jpg'
+        ],
+        new_num: 0,
         old_num: 0
       }
     },
     created () {
+      let date = this.utils.formatTime(new Date())
+      console.log(date)
       setInterval(() => {
         this.old_num = this.new_num
         // let num = Math.floor(Math.random() * 10)
@@ -65,13 +78,13 @@
         //   this.new_num = Math.floor(Math.random() * 10)
         // }
         this.new_num++
-        if (this.new_num === 10) {
+        if (this.new_num === this.img.length) {
           this.new_num = 0
         }
-        console.log('new:' + this.new_num)
-        console.log('old:' + this.old_num)
-        console.log('')
-      }, 5000)
+        // console.log('new:' + this.new_num)
+        // console.log('old:' + this.old_num)
+        // console.log('')
+      }, 2000)
     },
     methods: {
       turn_around () {
@@ -79,7 +92,7 @@
       }
     },
     components: {
-      HelloWorld
+      Header
     }
   }
 </script>
@@ -127,6 +140,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin: auto;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        overflow: hidden;
 
         .center-img {
           transition: 2s;
@@ -135,8 +153,6 @@
           background-size: cover;
           background-repeat: no-repeat;
           background-position: center;
-          border-radius: 50%;
-          overflow: hidden;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -156,7 +172,7 @@
           }
 
           .turn-around {
-            animation: changDeg 5s linear 3s infinite;
+            animation: changDeg 5s linear 1s infinite;
           }
 
           .tai-chi {
