@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Header/>
     <router-view/>
   </div>
 </template>
@@ -21,5 +22,9 @@
 
   .clear {
     clear: both;
+  }
+  .header{
+    width: 1200px;
+    margin: 0 auto;
   }
 </style>

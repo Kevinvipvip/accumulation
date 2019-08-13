@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Header msg="这是导航栏"/>
     <div class="eight-diagrams">
       <div class="around-img-box">
         <div class="around-img" :style="'background-image: url('+img[0]+')'"><a
@@ -26,7 +25,7 @@
       </div>
       <div class="eight-diagrams-center">
         <div class="center-img" :style="'background-image: url('+img[new_num]+')'">
-          <div class="tai-chi turn-around" @load="turn_around">
+          <div class="tai-chi turn-around">
             <div class="tai-chi-cont"></div>
             <div class="tai-chi-cont black"></div>
             <div class="tai-chi taiji">
@@ -45,8 +44,6 @@
 </template>
 
 <script>
-  import Header from '@/components/Header.vue'
-
   export default {
     name: 'home',
     data () {
@@ -84,16 +81,13 @@
         // console.log('new:' + this.new_num)
         // console.log('old:' + this.old_num)
         // console.log('')
-      }, 2000)
-    },
-    methods: {
-      turn_around () {
-
-      }
-    },
-    components: {
-      Header
+      }, 10000)
     }
+    // methods: {
+    //   turn_around () {
+    //
+    //   }
+    // },
   }
 </script>
 <style lang="scss" scoped>
@@ -130,6 +124,15 @@
         }
       }
 
+      @keyframes img_turn_around {
+        0% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(5deg);
+        }
+      }
+
       .eight-diagrams-center {
         position: absolute;
         top: 0;
@@ -145,9 +148,11 @@
         height: 400px;
         border-radius: 50%;
         overflow: hidden;
+        animation: img_turn_around 15s infinite;
+        animation-direction: alternate;
 
         .center-img {
-          transition: 2s;
+          transition: 5s;
           width: 400px;
           height: 400px;
           background-size: cover;

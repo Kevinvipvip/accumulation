@@ -19,8 +19,23 @@ let config = {
   vue_base: url + '/dist/#',
 
   tel_reg: /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/,
-  appid: 'wxa4ef22add86bdb0c'
+  appid: 'wxa4ef22add86bdb0c',
 
+  nav: [
+    {
+      title: '首页',
+      url: '/'
+    }, {
+      title: '测试',
+      url: '/test'
+    }, {
+      title: '库首页',
+      url: '/'
+    }, {
+      title: '环境测试',
+      url: '/test'
+    }
+  ]
 }
 
 export default config
