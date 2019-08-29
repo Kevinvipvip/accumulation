@@ -64,8 +64,8 @@
       }
     },
     created () {
-      let date = this.utils.formatTime(new Date())
-      console.log(date)
+      // let date = this.utils.formatTime(new Date())
+      // console.log(date)
       setInterval(() => {
         this.old_num = this.new_num
         // let num = Math.floor(Math.random() * 10)

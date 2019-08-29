@@ -13,6 +13,10 @@ export default new Router({
       path: '/test',
       name: 'test',
       component: () => import('./views/Test.vue')
+    }, {
+      path: '/swiper',
+      name: 'swiper',
+      component: () => import('./views/Swiper.vue')
     }
   ],
   mode: 'history'

@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import 'swiper'
+import 'swiper/dist/css/swiper.css'
+
 // 公共配置
 import config from './config'
 // 工具js

@@ -25,7 +25,7 @@
     },
     watch: {
       $route (from, next) {
-        console.log(from, next, 'kkk')
+        // console.log(from, next, 'kkk')
         this.show = from.query.index || 0
       }
     },

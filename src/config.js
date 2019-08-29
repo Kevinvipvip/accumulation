@@ -30,7 +30,7 @@ let config = {
       url: '/test'
     }, {
       title: '库首页',
-      url: '/'
+      url: '/swiper'
     }, {
       title: '环境测试',
       url: '/test'
