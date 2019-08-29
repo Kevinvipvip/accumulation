@@ -1,4 +1,4 @@
-# yijing
+# accumulation
 
 ## Project setup
 ```
