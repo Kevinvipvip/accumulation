@@ -26,10 +26,10 @@ let config = {
       title: '首页',
       url: '/'
     }, {
-      title: '测试',
+      title: '状元棋',
       url: '/test'
     }, {
-      title: '库首页',
+      title: '轮播图',
       url: '/swiper'
     }, {
       title: '环境测试',

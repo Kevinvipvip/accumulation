@@ -1,13 +1,15 @@
 <template>
-  <div class="header">
-    <div class="logo">
-      logo
+  <div class="header" :style="header_fixed?'position:fixed':'position:relative'">
+    <div class="header-box">
+      <div class="logo">
+        logo
+      </div>
+      <ul>
+        <li v-for="(v,index) in nav" :key="index" @click="choiceNav(index)" :class="show==index?'on':''">
+          <router-link :to="{path:v.url,query:{index:index}}">{{v.title}}</router-link>
+        </li>
+      </ul>
     </div>
-    <ul>
-      <li v-for="(v,index) in nav" :key="index" @click="choiceNav(index)" :class="show==index?'on':''">
-        <router-link :to="{path:v.url,query:{index:index}}">{{v.title}}</router-link>
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -19,6 +21,7 @@
     // },
     data () {
       return {
+        header_fixed: false,
         nav: [],
         show: -1
       }
@@ -31,6 +34,16 @@
     },
     mounted () {
       this.nav = this.config.nav
+      window.onscroll = (e) => {
+        // console.log(e)
+        let scrollTop = e.target.scrollingElement.scrollTop
+        console.log(scrollTop)
+        if (scrollTop >= 55) {
+          this.header_fixed = true
+        } else {
+          this.header_fixed = false
+        }
+      }
     },
     methods: {
       choiceNav (index) {
@@ -45,53 +58,64 @@
     height: 60px;
     overflow: hidden;
     background-color: #ff4c4c;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    transition: 5s;
 
-    .logo {
-      cursor: pointer;
-      flex-shrink: 0;
-      width: 100px;
+    .header-box {
+      width: 1200px;
       height: 100%;
-      background-color: #666666;
+      margin: 0 auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 20px;
-      color: #fff;
-    }
-
-    ul {
-      flex-grow: 1;
-      margin-left: 40px;
-      display: flex;
-      height: 100%;
-      align-items: center;
       justify-content: flex-start;
-      overflow: hidden;
+      align-items: center;
 
-      li {
-        height: 100%;
-        overflow: hidden;
+      .logo {
+        cursor: pointer;
         flex-shrink: 0;
-
-        a {
-          display: flex;
-          align-items: center;
-          height: 100%;
-          padding: 0 10px;
-          color: #fff;
-          font-size: 20px;
-        }
-
-        a:hover {
-          background-color: #808000;
-        }
+        width: 100px;
+        height: 100%;
+        background-color: #666666;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px;
+        color: #fff;
       }
 
-      .on {
-        background-color: #808000;
+      ul {
+        flex-grow: 1;
+        margin-left: 40px;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+
+        li {
+          height: 100%;
+          overflow: hidden;
+          flex-shrink: 0;
+
+          a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 10px;
+            color: #fff;
+            font-size: 20px;
+          }
+
+          a:hover {
+            background-color: #808000;
+          }
+        }
+
+        .on {
+          background-color: #808000;
+        }
       }
     }
   }
