@@ -19,7 +19,10 @@ let config = {
   vue_base: url + '/dist/#',
 
   tel_reg: /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/,
-  appid: 'wxa4ef22add86bdb0c',
+
+  // Bomb相关
+  Bmob_id: '4820b283f8489834',
+  api_key: 'GRJ526',
 
   nav: [
     {
@@ -27,13 +30,19 @@ let config = {
       url: '/'
     }, {
       title: '状元棋',
-      url: '/test'
+      url: '/zhuangyuanqi'
     }, {
       title: '轮播图',
       url: '/swiper'
     }, {
-      title: '环境测试',
+      title: '倒计时',
+      url: '/countdown'
+    }, {
+      title: '测试',
       url: '/test'
+    }, {
+      title: '添加数据',
+      url: '/add_data'
     }
   ]
 }

@@ -22,6 +22,7 @@
       }
     },
     mounted () {
+      this.getSlideImage()
       this.swiper = new Swiper('.swiper-container', {
         loop: true,
         autoplay: {
@@ -35,6 +36,14 @@
           }
         }
       })
+    },
+    methods: {
+      getSlideImage () {
+        // console.log(111)
+        this.Bmob.Query('slide_image').find().then(res => {
+          console.log(res)
+        })
+      }
     }
   }
 </script>

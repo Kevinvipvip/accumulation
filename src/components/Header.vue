@@ -6,7 +6,7 @@
       </div>
       <ul>
         <li v-for="(v,index) in nav" :key="index" @click="choiceNav(index)" :class="show==index?'on':''">
-          <router-link :to="{path:v.url,query:{index:index}}">{{v.title}}</router-link>
+          <router-link :to="{path:v.url,query:{nav:index}}">{{v.title}}</router-link>
         </li>
       </ul>
     </div>
@@ -29,7 +29,7 @@
     watch: {
       $route (from, next) {
         // console.log(from, next, 'kkk')
-        this.show = from.query.index || 0
+        this.show = from.query.nav || 0
       }
     },
     mounted () {
@@ -37,7 +37,7 @@
       window.onscroll = (e) => {
         // console.log(e)
         let scrollTop = e.target.scrollingElement.scrollTop
-        console.log(scrollTop)
+        // console.log(scrollTop)
         if (scrollTop >= 55) {
           this.header_fixed = true
         } else {
