@@ -2,7 +2,59 @@
   <div class="zhuang-yuan-qi">
     <div class="games-map">
       <div class="map-top">
-
+        <!--上边内围-->
+        <div class="line-one item-com item-t-n">
+          <div class="list-item" v-for="v in list_data_eight" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">京府衙门</div>
+          <div class="list-item" v-for="v in list_data_nine" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">九卿衙门</div>
+        </div>
+        <!--左边最外围-->
+        <div class="line-one item-com item-l-w">
+          <div class="list-item" v-for="v in list_data_six" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">布政司衙门</div>
+          <div class="list-item" v-for="v in list_data_seven" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">京县衙门</div>
+        </div>
+        <!--上边最外围-->
+        <div class="line-one item-com item-t-w">
+          <div class="list-item" v-for="v in list_data_three" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">外县衙门</div>
+          <div class="list-item" v-for="v in list_data_four" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">按察司衙门</div>
+          <div class="list-item" v-for="v in list_data_five" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">外省衙门</div>
+          <div class="line-tip">俱送礼二份升入内<br>从尚书升入太师者</div>
+        </div>
+        <!--右边最外围-->
         <div class="line-one item-com">
           <div class="list-item" v-for="v in list_data_one" :key="v.id">
             <span>{{v.grade}}</span>
@@ -43,7 +95,14 @@
         tip: '德',
         list_data: [],
         list_data_one: [],
-        list_data_two: []
+        list_data_two: [],
+        list_data_three: [],
+        list_data_four: [],
+        list_data_five: [],
+        list_data_six: [],
+        list_data_seven: [],
+        list_data_eight: [],
+        list_data_nine: [],
       }
     },
     created () {
@@ -57,6 +116,20 @@
             this.list_data_one.push(item)
           } else if (item.id > 20 && item.id <= 27) {
             this.list_data_two.push(item)
+          } else if (item.id > 27 && item.id <= 32) {
+            this.list_data_three.push(item)
+          } else if (item.id > 32 && item.id <= 36) {
+            this.list_data_four.push(item)
+          } else if (item.id > 36 && item.id <= 39) {
+            this.list_data_five.push(item)
+          } else if (item.id > 39 && item.id <= 45) {
+            this.list_data_six.push(item)
+          } else if (item.id > 45 && item.id <= 49) {
+            this.list_data_seven.push(item)
+          } else if (item.id > 49 && item.id <= 54) {
+            this.list_data_eight.push(item)
+          } else if (item.id > 54 && item.id <= 59) {
+            this.list_data_nine.push(item)
           }
         })
         console.log(this.list_data)
@@ -108,7 +181,6 @@
       height: 1200px;
       border: 1px solid #2D0E0B;
       box-sizing: border-box;
-
 
       .line-one {
         height: 200px;
@@ -163,7 +235,7 @@
       }
 
       .map-top {
-        height: 1000px;
+        height: calc(100% - 200px);
         width: 100%;
         position: relative;
 
@@ -171,7 +243,7 @@
           position: absolute;
           bottom: 0;
           right: 0;
-          width: 1000px;
+          width: calc(100% - 200px);
           height: 230px;
           justify-content: flex-start;
           transform: rotate(-90deg) translateX(100%);
@@ -201,6 +273,48 @@
               height: 30px;
               border-bottom: 1px solid #2D0E0B;
             }
+          }
+        }
+
+        .item-t-w {
+          width: calc(100% - 230px);
+          bottom: unset;
+          right: unset;
+          left: 0;
+          top: 0;
+          transform: rotate(180deg);
+          transform-origin: unset;
+
+          .list-item, .line-tip, .title {
+            width: 6.25%;
+          }
+        }
+
+        .item-l-w {
+          width: calc(100% - 200px - 230px);
+          bottom: unset;
+          right: unset;
+          left: 0;
+          top: 230px;
+          transform: rotate(90deg) translateY(-100%);
+          transform-origin: left top;
+
+          .list-item, .line-tip, .title {
+            width: 8.3333%;
+          }
+        }
+
+        .item-t-n {
+          width: calc(100% - 230px - 230px);
+          bottom: unset;
+          right: unset;
+          left: 230px;
+          top: 230px;
+          transform: rotate(180deg);
+          transform-origin: unset;
+
+          .list-item, .line-tip, .title {
+            width: 8.3333%;
           }
         }
       }

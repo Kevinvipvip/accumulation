@@ -3,7 +3,8 @@
     <div class="list">
       <ul>
         <li v-for="(v,index) in list_data" :key="index">
-          <p>{{v.id}}&nbsp;&nbsp;{{v.official_name}}&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #ff4c4c;">{{v.grade}}</span><br>&nbsp;&nbsp;&nbsp;&nbsp;功{{v.merit}}&nbsp;德{{v.virtue}}&nbsp;才{{v.ability}}&nbsp;脏{{v.dirty}}
+          <p>{{v.id}}&nbsp;&nbsp;{{v.official_name}}&nbsp;&nbsp;&nbsp;&nbsp;<span
+            style="color: #ff4c4c;">{{v.grade}}</span><br>&nbsp;&nbsp;&nbsp;&nbsp;功{{v.merit}}&nbsp;德{{v.virtue}}&nbsp;才{{v.ability}}&nbsp;脏{{v.dirty}}
           </p>
         </li>
       </ul>
@@ -181,6 +182,12 @@
           obj.set('dirty', this.dirty)
           obj.save().then(res => {
             this.getListData()
+            this.official_name = ''
+            this.grade = ''
+            this.merit = ''
+            this.virtue = ''
+            this.ability = ''
+            this.dirty = ''
           }).catch(err => {
             console.log(err)
           })
