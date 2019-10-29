@@ -56,5 +56,11 @@
   .countdown {
     width: 1200px;
     margin: 0 auto;
+
+    p {
+      font-size: 30px;
+      line-height: 80px;
+      text-align: center;
+    }
   }
 </style>

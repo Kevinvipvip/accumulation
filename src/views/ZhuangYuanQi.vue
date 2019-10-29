@@ -2,6 +2,42 @@
   <div class="zhuang-yuan-qi">
     <div class="games-map">
       <div class="map-top">
+        <!--中间-->
+        <div class="line-one item-com item-center">
+          <div class="list-item" v-for="v in list_data_thirteen" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <div class="img-box"><img :src="v.pic"/></div>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+        </div>
+        <!--左边内围-->
+        <div class="line-one item-com item-l-n">
+          <div class="list-item" v-for="v in list_data_twelve" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">督察院衙门</div>
+        </div>
+        <!--下边内围-->
+        <div class="line-one item-com item-b-n">
+          <div class="list-item" v-for="v in list_data_eleven" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">六部衙门</div>
+        </div>
+        <!--右边内围-->
+        <div class="line-one item-com item-r-n">
+          <div class="list-item" v-for="v in list_data_ten" :key="v.id">
+            <span>{{v.grade}}</span>
+            <h3>{{v.official_name}}</h3>
+            <p>功{{v.merit}}脏{{v.dirty}}<br>德{{v.virtue}}才{{v.ability}}</p>
+          </div>
+          <div class="title">翰林书院</div>
+        </div>
         <!--上边内围-->
         <div class="line-one item-com item-t-n">
           <div class="list-item" v-for="v in list_data_eight" :key="v.id">
@@ -87,6 +123,10 @@
   </div>
 </template>
 <script>
+  import taishi from '../assets/taishi.png'
+  import taifu from '../assets/taifu.png'
+  import taibao from '../assets/taibao.png'
+
   export default {
     name: 'ZhuanYuanQi',
     data () {
@@ -103,6 +143,10 @@
         list_data_seven: [],
         list_data_eight: [],
         list_data_nine: [],
+        list_data_ten: [],
+        list_data_eleven: [],
+        list_data_twelve: [],
+        list_data_thirteen: []
       }
     },
     created () {
@@ -130,9 +174,27 @@
             this.list_data_eight.push(item)
           } else if (item.id > 54 && item.id <= 59) {
             this.list_data_nine.push(item)
+          } else if (item.id > 59 && item.id <= 66) {
+            this.list_data_ten.push(item)
+          } else if (item.id > 66 && item.id <= 73) {
+            this.list_data_eleven.push(item)
+          } else if (item.id > 73 && item.id <= 76) {
+            this.list_data_twelve.push(item)
+          } else if (item.id > 76 && item.id <= 79) {
+            switch (item.id) {
+              case 77:
+                item.pic = taibao
+                break
+              case 78:
+                item.pic = taishi
+                break
+              case 79:
+                item.pic = taifu
+                break
+            }
+            this.list_data_thirteen.push(item)
           }
         })
-        console.log(this.list_data)
       })
     },
     methods: {
@@ -213,7 +275,7 @@
             justify-content: center;
             align-items: center;
             border-bottom: 1px solid #2D0E0B;
-            height: 50px;
+            height: 45px;
             /*line-height: 50px;*/
             font-size: 28px;
             flex-shrink: 0;
@@ -244,7 +306,7 @@
           bottom: 0;
           right: 0;
           width: calc(100% - 200px);
-          height: 230px;
+          height: 220px;
           justify-content: flex-start;
           transform: rotate(-90deg) translateX(100%);
           transform-origin: 100% 100%;
@@ -257,7 +319,7 @@
             justify-content: center;
             align-items: center;
             width: 6.6666%;
-            border-bottom: 1px solid #2D0E0B;
+            border: 1px solid #2D0E0B;
             box-sizing: border-box;
           }
 
@@ -270,14 +332,14 @@
               justify-content: center;
               align-items: center;
               width: 100%;
-              height: 30px;
+              height: 25px;
               border-bottom: 1px solid #2D0E0B;
             }
           }
         }
 
         .item-t-w {
-          width: calc(100% - 230px);
+          width: calc(100% - 220px);
           bottom: unset;
           right: unset;
           left: 0;
@@ -291,11 +353,11 @@
         }
 
         .item-l-w {
-          width: calc(100% - 200px - 230px);
+          width: calc(100% - 200px - 220px);
           bottom: unset;
           right: unset;
           left: 0;
-          top: 230px;
+          top: 220px;
           transform: rotate(90deg) translateY(-100%);
           transform-origin: left top;
 
@@ -305,16 +367,82 @@
         }
 
         .item-t-n {
-          width: calc(100% - 230px - 230px);
+          width: calc(100% - 220px - 220px);
           bottom: unset;
           right: unset;
-          left: 230px;
-          top: 230px;
+          left: 220px;
+          top: 220px;
           transform: rotate(180deg);
           transform-origin: unset;
 
           .list-item, .line-tip, .title {
             width: 8.3333%;
+          }
+        }
+
+        .item-r-n {
+          width: calc(100% - 220px - 220px - 200px);
+          bottom: 0;
+          right: 220px;
+
+          .list-item, .line-tip, .title {
+            width: 12.5%;
+          }
+        }
+
+        .item-b-n {
+          width: calc(100% - 220px - 220px - 220px);
+          bottom: 0;
+          right: unset;
+          left: 220px;
+          transform-origin: unset;
+          transform: rotate(0);
+
+          .list-item, .line-tip, .title {
+            width: 12.5%;
+          }
+        }
+
+        .item-l-n {
+          width: calc(100% - 220px - 220px - 220px - 200px);
+          bottom: unset;
+          right: unset;
+          left: 220px;
+          top: 440px;
+          transform: rotate(90deg) translateY(-100%);
+          transform-origin: left top;
+
+          .list-item, .line-tip, .title {
+            width: 25%;
+          }
+        }
+
+        .item-center {
+          width: calc(100% - 220px - 220px - 220px - 220px);
+          height: calc(100% - 220px - 220px - 220px);
+          bottom: 220px;
+          right: unset;
+          left: 440px;
+          top: 440px;
+          transform: rotate(0);
+          transform-origin: unset;
+
+          .list-item, .line-tip, .title {
+            width: 33.3333%;
+
+            .img-box {
+              width: 100%;
+              margin-top: 5px;
+              height: 115px;
+              border-top: 1px solid #2D0E0B;
+              border-bottom: 1px solid #2D0E0B;
+
+              img {
+                width: 100%;
+                height: 100%;
+                display: block;
+              }
+            }
           }
         }
       }
